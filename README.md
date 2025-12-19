@@ -10,7 +10,7 @@ The Windows download button points to:
 
 The macOS download button points to:
 
-`/downloads/SimplePresenterSetup.dmg`
+`https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenter.dmg`
 
 To make downloads work:
 
@@ -19,8 +19,7 @@ To make downloads work:
 
 For macOS:
 
-3. Copy your macOS installer into the same `downloads` folder and name it **`SimplePresenterSetup.dmg`**
-   - If your installer is a `.pkg` instead, update the link in `index.html` to match the file name.
+3. The DMG is hosted on GitHub Releases (no local `downloads/` folder required).
 
 If you prefer hosting the installer somewhere else (GitHub Releases, Google Drive, etc.), edit `index.html` and replace the download link.
 
