@@ -32,9 +32,9 @@
         <h1>Present. Share. Focus.</h1>
         <p class="hero__line">Verses, lyrics, cues. One calm window.</p>
         <div class="hero__actions">
-          <a class="btn" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenter-Setup.exe">Windows</a>
-          <a class="btn btn--ghost" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenterARM.dmg">macOS ARM</a>
-          <a class="btn btn--ghost" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenterIntel.dmg">macOS Intel</a>
+          <a class="btn" data-os="windows" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenter-Setup.exe">Windows</a>
+          <a class="btn btn--ghost" data-os="mac-arm" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenterARM.dmg">macOS ARM</a>
+          <a class="btn btn--ghost" data-os="mac-intel" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenterIntel.dmg">macOS Intel</a>
         </div>
         <p class="hero__hint">Open source on <a href="https://github.com/psnact/SimplePresenter" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
       </section>
@@ -56,5 +56,41 @@
         <a class="link" href="https://github.com/psnact/SimplePresenter" target="_blank" rel="noopener noreferrer">GitHub</a>
       </footer>
     </main>
+    <script>
+      (() => {
+        const buttons = document.querySelectorAll('[data-os]');
+        if (!buttons.length) return;
+
+        const ua = navigator.userAgent || navigator.platform || '';
+        const uaData = navigator.userAgentData;
+
+        const prefersWindows = /windows/i.test(ua);
+        const prefersMac = /mac os/i.test(ua);
+        const prefersIOS = /ipad|iphone|ipod/i.test(ua);
+
+        let target = null;
+        if (prefersWindows) {
+          target = document.querySelector('[data-os="windows"]');
+        } else if (prefersMac || prefersIOS) {
+          const isArmHint = /arm64|apple silicon|apple m\d/i.test(ua);
+          const isIntelHint = /intel/i.test(ua);
+          const highEntropyArch = uaData && uaData.platform === 'macOS' && uaData.architecture;
+
+          if (highEntropyArch) {
+            if (/arm/i.test(highEntropyArch)) target = document.querySelector('[data-os="mac-arm"]');
+            else if (/x86|intel/i.test(highEntropyArch)) target = document.querySelector('[data-os="mac-intel"]');
+          }
+
+          if (!target && isArmHint) target = document.querySelector('[data-os="mac-arm"]');
+          if (!target && isIntelHint) target = document.querySelector('[data-os="mac-intel"]');
+          if (!target) target = document.querySelector('[data-os="mac-arm"]');
+        }
+
+        if (target) {
+          target.classList.add('btn--active');
+          target.setAttribute('aria-current', 'true');
+        }
+      })();
+    </script>
   </body>
 </html>
