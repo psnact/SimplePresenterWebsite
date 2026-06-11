@@ -72,17 +72,19 @@
         if (prefersWindows) {
           target = document.querySelector('[data-os="windows"]');
         } else if (prefersMac || prefersIOS) {
-          const isArmHint = /arm64|apple silicon|apple m\d/i.test(ua);
-          const isIntelHint = /intel/i.test(ua);
           const highEntropyArch = uaData && uaData.platform === 'macOS' && uaData.architecture;
-
           if (highEntropyArch) {
             if (/arm/i.test(highEntropyArch)) target = document.querySelector('[data-os="mac-arm"]');
             else if (/x86|intel/i.test(highEntropyArch)) target = document.querySelector('[data-os="mac-intel"]');
           }
 
-          if (!target && isArmHint) target = document.querySelector('[data-os="mac-arm"]');
-          if (!target && isIntelHint) target = document.querySelector('[data-os="mac-intel"]');
+          if (!target) {
+            const isArmHint = /arm64|apple silicon|apple m\d|aarch64/i.test(ua);
+            const isIntelHint = /x86_64|i686|intel\s(?:core|cpu)/i.test(ua);
+            if (isArmHint) target = document.querySelector('[data-os="mac-arm"]');
+            else if (isIntelHint) target = document.querySelector('[data-os="mac-intel"]');
+          }
+
           if (!target) target = document.querySelector('[data-os="mac-arm"]');
         }
 

@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="description" content="SimplePresenter documentation: install, setup, projecting, playlists, and OBS overlay." />
+    <title>SimplePresenter | Documentation</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="docs">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="index.html" aria-label="SimplePresenter Home">
+          <img class="brand__logo" src="Logo.png" alt="" aria-hidden="true" />
+          <span class="brand__text">SimplePresenter</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#for-groups">For Groups</a>
+          <a href="index.html#download">Download</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="docs.html" aria-current="page">Docs</a>
+          <a href="https://github.com/psnact/SimplePresenter" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+
+        <div class="header__cta">
+          <a class="btn btn--ghost" href="index.html#download">Downloads</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container">
+          <div class="doclayout">
+            <aside class="doclayout__side" aria-label="Documentation navigation">
+              <div class="docnav__title">On this page</div>
+              <nav id="docToc" class="docnav"></nav>
+              <a class="docnav__top" href="#main">Return to top</a>
+            </aside>
+
+            <article class="doc" id="docContent">
+              <p class="eyebrow">Documentation</p>
+              <h1 class="doc__title">SimplePresenter Documentation</h1>
+              <p class="lead doc__lead">
+                SimplePresenter is a lightweight presentation app designed for churches and small groups. It helps you quickly project verses, lyrics,
+                images/videos, YouTube items (optional), PowerPoint slides, and notes.
+              </p>
+
+              <hr />
+
+              <h2>Download &amp; Install</h2>
+
+              <h3>Windows (recommended)</h3>
+              <ol>
+                <li>Download the installer from the website or GitHub Releases.</li>
+                <li>Run <code>SimplePresenter-Setup.exe</code>.</li>
+                <li>Finish the installer.</li>
+                <li>Launch <strong>SimplePresenter</strong> from the Start Menu.</li>
+              </ol>
+
+              <h3>macOS</h3>
+              <ol>
+                <li>Download the latest <code>.dmg</code> from GitHub Releases or the website.</li>
+                <li>Open it, then drag <strong>SimplePresenter.app</strong> to <strong>Applications</strong>.</li>
+                <li>Launch <strong>SimplePresenter</strong> from <strong>Applications</strong>.</li>
+              </ol>
+
+              <hr />
+
+            <h2>System Requirements</h2>
+
+            <h3>Windows</h3>
+            <ul>
+              <li>Windows 10/11</li>
+              <li>64-bit CPU</li>
+              <li>A second display or projector is recommended</li>
+            </ul>
+
+            <h3>macOS</h3>
+            <ul>
+              <li>macOS (64-bit)</li>
+              <li>A second display or projector is recommended</li>
+            </ul>
+
+            <h3>Notes on background video playback</h3>
+            <ul>
+              <li>Use H.264 encoded video backgrounds.</li>
+              <li>Prefer 1080p backgrounds (or test higher resolutions first).</li>
+            </ul>
+
+            <hr />
+
+            <h2>First Launch Checklist</h2>
+            <ol>
+              <li>Open <strong>SimplePresenter</strong>.</li>
+              <li>Go to <strong>Tools → Settings</strong>.</li>
+              <li>
+                Configure:
+                <ul>
+                  <li>Projection text appearance (font, size, colors)</li>
+                  <li>Default backgrounds</li>
+                </ul>
+              </li>
+              <li>
+                Test output:
+                <ul>
+                  <li>Project a Bible verse</li>
+                  <li>Project a song section</li>
+                  <li>Try an image/video background</li>
+                </ul>
+              </li>
+            </ol>
+
+            <hr />
+
+            <h2>The Main Window (Operator View)</h2>
+            <p>
+              The main window is designed for the operator (the person controlling the service). It contains a content area with tabs (Bible, Songs,
+              and additional content tabs), a playlist panel (service order), and preview canvases showing what will appear on outputs.
+            </p>
+
+            <hr />
+
+            <h2>Outputs (What People See)</h2>
+            <p>SimplePresenter can render content to output canvases:</p>
+            <ul>
+              <li><strong>Projection output</strong>: the main congregation-facing output.</li>
+              <li><strong>Secondary output</strong>: an additional output that can be used for livestream, confidence, or alternative formatting.</li>
+            </ul>
+
+            <p>If you use a projector / second screen:</p>
+            <ul>
+              <li>The projection output is intended to be full-screen on the external display.</li>
+              <li>You can also toggle fullscreen with <code>F11</code> (if enabled in your build).</li>
+            </ul>
+
+            <hr />
+
+            <h2>Bible Projection</h2>
+
+            <h3>Where Bible files go</h3>
+            <p>SimplePresenter loads Bible translations from the application Bible folder.</p>
+
+            <ul>
+              <li>
+                <strong>Preferred (cross-platform):</strong> your system AppData folder
+                <ul>
+                  <li>Windows example: <code>%LOCALAPPDATA%\SimplePresenter\SimplePresenter\Bible</code></li>
+                  <li>macOS example: <code>~/Library/Application Support/SimplePresenter/Bible</code></li>
+                </ul>
+              </li>
+              <li><strong>Windows legacy fallback (supported):</strong> <code>C:\SimplePresenter\Bible</code></li>
+            </ul>
+
+            <p>If no Bible XML files exist yet, SimplePresenter can copy built-in default Bibles into the Bible folder.</p>
+
+            <h3>Supported Bible XML formats</h3>
+            <p>SimplePresenter supports both:</p>
+            <ul>
+              <li>A newer <code>XMLBIBLE</code> format</li>
+              <li>An older <code>bible/book/chapter/verse</code> format</li>
+            </ul>
+
+            <p>Example (<code>XMLBIBLE</code> format):</p>
+            <pre><code>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;XMLBIBLE biblename="KJV"&gt;
+  &lt;BIBLEBOOK bname="John"&gt;
+    &lt;CHAPTER cnumber="3"&gt;
+      &lt;VERS vnumber="16"&gt;For God so loved the world...&lt;/VERS&gt;
+    &lt;/CHAPTER&gt;
+  &lt;/BIBLEBOOK&gt;
+&lt;/XMLBIBLE&gt;
+</code></pre>
+
+            <p>Example (older format):</p>
+            <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;bible translation="KJV"&gt;
+  &lt;book name="John"&gt;
+    &lt;chapter number="3"&gt;
+      &lt;verse number="16"&gt;For God so loved the world...&lt;/verse&gt;
+    &lt;/chapter&gt;
+  &lt;/book&gt;
+&lt;/bible&gt;
+</code></pre>
+
+            <h3>Quick reference lookup</h3>
+            <ol>
+              <li>Open the <strong>Bible</strong> tab.</li>
+              <li>
+                Type a reference:
+                <ul>
+                  <li><code>John 3:16</code></li>
+                  <li><code>John 3:16-18</code></li>
+                  <li><code>Psalm 23</code></li>
+                </ul>
+              </li>
+              <li>Press Enter.</li>
+              <li>Click <strong>Project</strong>.</li>
+            </ol>
+
+            <h3>Search by text</h3>
+            <ol>
+              <li>Open the <strong>Bible</strong> tab.</li>
+              <li>Type a keyword (example: <code>love</code>).</li>
+              <li>Click a result.</li>
+              <li>Click <strong>Project</strong>.</li>
+            </ol>
+
+            <h3>Navigate verses</h3>
+            <p>Use <strong>Previous</strong> and <strong>Next</strong> to step through a passage verse-by-verse.</p>
+
+            <hr />
+
+            <h2>Songs (Lyrics)</h2>
+
+            <h3>Where songs go</h3>
+            <p>Songs are loaded from the <code>data/songs/</code> folder.</p>
+            <ul>
+              <li>In a standard install, this folder is located next to the application (inside the install directory).</li>
+            </ul>
+
+            <h3>Supported song formats</h3>
+            <ul>
+              <li><code>.txt</code></li>
+              <li><code>.xml</code></li>
+            </ul>
+
+            <h3>Simple <code>.txt</code> format (recommended)</h3>
+            <ul>
+              <li>Each song is a text file.</li>
+              <li>Blank lines separate sections.</li>
+              <li>The filename becomes the song title.</li>
+            </ul>
+
+            <p>Example: <code>Amazing_Grace.txt</code></p>
+            <pre><code>Amazing grace how sweet the sound
+That saved a wretch like me
+
+I once was lost but now am found
+Was blind but now I see
+</code></pre>
+
+            <h3>How to add songs</h3>
+            <ol>
+              <li>Create a <code>.txt</code> file inside <code>data/songs/</code>.</li>
+              <li>Put lyrics in the file.</li>
+              <li>In the Songs panel, click <strong>Refresh</strong> (if available).</li>
+            </ol>
+
+            <h3>Projecting a song</h3>
+            <ol>
+              <li>Open the <strong>Songs</strong> tab.</li>
+              <li>Select a song.</li>
+              <li>Select a section.</li>
+              <li>Click <strong>Project Section</strong>.</li>
+            </ol>
+
+            <hr />
+
+            <h2>Media (Images and Videos)</h2>
+            <p>SimplePresenter supports background and media playback.</p>
+
+            <h3>Supported formats</h3>
+            <ul>
+              <li>Images: PNG, JPG, JPEG, BMP</li>
+              <li>Videos: MP4, WebM, AVI, MOV</li>
+            </ul>
+
+            <h3>Tips</h3>
+            <ul>
+              <li>For consistent results, keep backgrounds at 1080p.</li>
+              <li>For videos, prefer H.264 encoded MP4.</li>
+            </ul>
+
+            <hr />
+
+            <h2>YouTube (Optional)</h2>
+            <p>
+              Some builds of SimplePresenter include an embedded browser (Qt WebEngine) that enables YouTube items. If your build includes this
+              feature:
+            </p>
+            <ul>
+              <li>You can add YouTube items to the playlist.</li>
+              <li>You can control playback via the media controls.</li>
+            </ul>
+
+            <p>If your build does not include WebEngine, YouTube features will not be available.</p>
+
+            <hr />
+
+            <h2>PowerPoint</h2>
+            <p>SimplePresenter includes a PowerPoint workflow for projecting slides.</p>
+            <ul>
+              <li>Import a PowerPoint presentation in the PowerPoint panel.</li>
+              <li>The app may generate slide images temporarily while the presentation is in use.</li>
+            </ul>
+            <p>Temporary files used for PowerPoint are cleaned up automatically when the app exits.</p>
+
+            <hr />
+
+            <h2>Playlist (Order of Service)</h2>
+            <p>Playlists let you prepare the full order of service and then step through it live.</p>
+
+            <h3>Create a new playlist</h3>
+            <ul>
+              <li>Use <strong>File → New Playlist</strong> (<code>Ctrl+N</code>).</li>
+            </ul>
+
+            <h3>Add items</h3>
+            <p>Depending on your build, playlists can include:</p>
+            <ul>
+              <li>Bible references</li>
+              <li>Songs</li>
+              <li>Media files</li>
+              <li>YouTube items</li>
+            </ul>
+
+            <h3>Reorder items</h3>
+            <ul>
+              <li>Drag-and-drop (if enabled), or use Move Up / Move Down.</li>
+            </ul>
+
+            <h3>Save and load</h3>
+            <ul>
+              <li>Save: <strong>File → Save Playlist</strong> (<code>Ctrl+S</code>)</li>
+              <li>Load: <strong>File → Open Playlist</strong> (<code>Ctrl+O</code>)</li>
+            </ul>
+            <p>Playlists are stored as <code>.service</code> files (JSON).</p>
+
+            <hr />
+
+            <h2>Notes (Operator Notes)</h2>
+            <p>SimplePresenter includes an operator notes area for service notes.</p>
+            <ul>
+              <li>Notes are designed for the operator.</li>
+              <li>Notes are not intended to appear on the projection output (unless you choose to display them via overlays / OBS).</li>
+            </ul>
+
+            <hr />
+
+            <h2>OBS Browser Overlay (Livestream)</h2>
+            <p>
+              SimplePresenter includes a built-in <strong>OBS Browser Overlay</strong> so your livestream can automatically show the currently
+              projected:
+            </p>
+            <ul>
+              <li>Bible text + reference</li>
+              <li>Media (image/video) preview card</li>
+              <li>(Optional) YouTube preview card</li>
+              <li>(Optional) Notes overlay image</li>
+            </ul>
+
+            <h3>How it works</h3>
+            <ul>
+              <li>SimplePresenter starts a local HTTP server for the overlay page.</li>
+              <li>It also starts a WebSocket server used for media / YouTube playback sync.</li>
+            </ul>
+
+            <h3>URLs and ports</h3>
+            <ul>
+              <li>
+                <strong>Overlay page (OBS Browser Source)</strong>
+                <ul>
+                  <li><code>http://localhost:8080/overlay</code></li>
+                  <li>(<code>http://localhost:8080/</code> also works)</li>
+                </ul>
+              </li>
+              <li>
+                <strong>WebSocket (sync channel)</strong>
+                <ul>
+                  <li><code>ws://localhost:8081</code></li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>OBS setup (recommended)</h3>
+            <ol>
+              <li>Open OBS.</li>
+              <li>In <strong>Sources</strong>, click <code>+</code>.</li>
+              <li>Choose <strong>Browser</strong>.</li>
+              <li>Set <strong>URL</strong> to <code>http://localhost:8080/overlay</code>.</li>
+              <li>
+                Set <strong>Width</strong> and <strong>Height</strong> to match your OBS canvas (recommended):
+                <ul>
+                  <li><code>1920</code> x <code>1080</code></li>
+                </ul>
+              </li>
+              <li>Click <strong>OK</strong>.</li>
+            </ol>
+
+            <p>The overlay page has a transparent background, so you can place it above your camera/game capture.</p>
+
+            <h3>Important notes</h3>
+            <ul>
+              <li>
+                The overlay server is intended to run on the <strong>same computer as OBS</strong>.
+                <ul>
+                  <li>The overlay page hard-codes <code>ws://localhost:8081</code> for sync, which will not work if OBS is on another PC.</li>
+                </ul>
+              </li>
+              <li>If another app is already using port <code>8080</code>, the overlay server will fail to start.</li>
+            </ul>
+
+            <hr />
+
+            <h2>File Locations</h2>
+
+            <h3>Bible translations</h3>
+            <ul>
+              <li>
+                Preferred:
+                <ul>
+                  <li><code>%LOCALAPPDATA%\SimplePresenter\SimplePresenter\Bible</code></li>
+                  <li><code>~/Library/Application Support/SimplePresenter/Bible</code></li>
+                </ul>
+              </li>
+              <li>
+                Windows legacy fallback:
+                <ul>
+                  <li><code>C:\SimplePresenter\Bible</code></li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Songs</h3>
+            <ul>
+              <li><code>data/songs/</code></li>
+            </ul>
+
+            <h3>Saved playlists</h3>
+            <ul>
+              <li><code>data/services/</code></li>
+            </ul>
+
+            <h3>Backgrounds</h3>
+            <ul>
+              <li><code>data/backgrounds/</code></li>
+            </ul>
+
+            <hr />
+
+            <h2>Keyboard Shortcuts</h2>
+            <p>Common shortcuts:</p>
+            <ul>
+              <li><code>Ctrl+N</code>: New playlist</li>
+              <li><code>Ctrl+O</code>: Open playlist</li>
+              <li><code>Ctrl+S</code>: Save playlist</li>
+              <li><code>Esc</code>: Clear overlays</li>
+            </ul>
+            <p>(Some builds may include additional shortcuts.)</p>
+
+            <hr />
+
+            <h2>Troubleshooting</h2>
+
+            <h3>"Missing DLL" on Windows</h3>
+            <p>If SimplePresenter fails to start due to missing DLLs, reinstall using the latest installer and ensure you are using the official release build.</p>
+
+            <h3>Bible translations not appearing</h3>
+            <ul>
+              <li>Confirm you placed <code>.xml</code> Bible files in the Bible folder.</li>
+              <li>Restart the app.</li>
+              <li>Ensure the XML file is valid UTF-8.</li>
+            </ul>
+
+            <h3>Songs not appearing</h3>
+            <ul>
+              <li>Confirm songs are in <code>data/songs/</code>.</li>
+              <li>Confirm the file extension is <code>.txt</code> or <code>.xml</code>.</li>
+              <li>Use the Songs panel refresh button if available.</li>
+            </ul>
+
+            <h3>Video background stutters</h3>
+            <ul>
+              <li>Use a lower-resolution video.</li>
+              <li>Re-encode to H.264.</li>
+              <li>Test on the target machine and projector resolution.</li>
+            </ul>
+
+            <h3>OBS overlay not working</h3>
+            <ul>
+              <li>Confirm SimplePresenter is running (it starts the overlay server on launch).</li>
+              <li>Confirm you can open <code>http://localhost:8080/overlay</code> in a normal browser on the same PC.</li>
+              <li>Ensure port <code>8080</code> is not already in use (overlay page).</li>
+              <li>Ensure port <code>8081</code> is not blocked (WebSocket sync).</li>
+              <li>
+                If the overlay loads but doesn’t update:
+                <ul>
+                  <li>Remove and re-add the OBS Browser Source.</li>
+                  <li>In the Browser Source properties, use <strong>Refresh cache of current page</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <hr />
+
+            <h2>Updates</h2>
+
+            <h3>Windows</h3>
+            <p>Windows builds can support in-app update checks. The updater reads a simple <code>update.json</code> feed and downloads the installer.</p>
+
+            <h3>macOS</h3>
+            <p>macOS updates are manual:</p>
+            <ol>
+              <li>Open <strong>Help → Check for Updates...</strong></li>
+              <li>Download the latest macOS build.</li>
+              <li>Quit SimplePresenter.</li>
+              <li>Replace <code>SimplePresenter.app</code> in <code>/Applications</code>.</li>
+            </ol>
+
+            <hr />
+
+            <h2>Support</h2>
+            <p>
+              Issues / bug reports:
+              <a href="https://github.com/psnact/SimplePresenter/issues" target="_blank" rel="noopener noreferrer">https://github.com/psnact/SimplePresenter/issues</a>
+            </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="brand brand--footer">
+            <img class="brand__logo brand__logo--footer" src="Logo.png" alt="" aria-hidden="true" />
+            <span class="brand__text">SimplePresenter</span>
+          </div>
+          <div class="muted">Made for Church Cell Groups &amp; Bible Study.</div>
+        </div>
+
+        <div class="footer__links">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#download">Download</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="docs.html" aria-current="page">Docs</a>
+          <a href="https://github.com/psnact/SimplePresenter" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+
+        <div class="footer__fine muted">© <span id="year"></span> SimplePresenter</div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const toSlug = (text) =>
+        text
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-');
+
+      const content = document.getElementById('docContent');
+      const toc = document.getElementById('docToc');
+
+      const headings = Array.from(content.querySelectorAll('h2, h3'));
+      const used = new Map();
+
+      const ensureId = (el) => {
+        if (el.id) return el.id;
+        const base = toSlug(el.textContent || 'section');
+        const count = (used.get(base) || 0) + 1;
+        used.set(base, count);
+        const id = count === 1 ? base : `${base}-${count}`;
+        el.id = id;
+        return id;
+      };
+
+      const makeLink = (heading) => {
+        const id = ensureId(heading);
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.className = `docnav__link ${heading.tagName === 'H3' ? 'docnav__link--h3' : 'docnav__link--h2'}`;
+        a.textContent = heading.textContent || '';
+        return a;
+      };
+
+      headings.forEach((h) => toc.appendChild(makeLink(h)));
+
+      const links = Array.from(toc.querySelectorAll('a.docnav__link'));
+      const byId = new Map(links.map((a) => [a.getAttribute('href')?.slice(1) || '', a]));
+      const ordered = headings.map((h) => h);
+
+      let raf = 0;
+      const setActive = () => {
+        raf = 0;
+        const y = window.scrollY + 120;
+        let active = ordered[0];
+
+        for (const h of ordered) {
+          if (h.offsetTop <= y) active = h;
+          else break;
+        }
+
+        links.forEach((a) => a.classList.remove('is-active'));
+        const activeId = active ? active.id : '';
+        const activeLink = byId.get(activeId);
+        if (activeLink) activeLink.classList.add('is-active');
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (raf) return;
+          raf = window.requestAnimationFrame(setActive);
+        },
+        { passive: true }
+      );
+      window.addEventListener('resize', setActive);
+      setActive();
+    </script>
+  </body>
+</html>
