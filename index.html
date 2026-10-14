@@ -34,7 +34,6 @@
         <div class="hero__actions">
           <a class="btn btn--ghost" data-os="windows" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenter-Setup.exe">Windows</a>
           <a class="btn btn--ghost" data-os="mac-arm" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenterARM.dmg">macOS ARM</a>
-          <a class="btn btn--ghost" data-os="mac-intel" href="https://github.com/psnact/SimplePresenter/releases/latest/download/SimplePresenterIntel.dmg">macOS Intel</a>
         </div>
         <p class="hero__hint">Open source on <a href="https://github.com/psnact/SimplePresenter" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
       </section>
@@ -62,7 +61,6 @@
         if (!buttons.length) return;
 
         const ua = navigator.userAgent || navigator.platform || '';
-        const uaData = navigator.userAgentData;
 
         const prefersWindows = /windows/i.test(ua);
         const prefersMac = /mac os/i.test(ua);
@@ -72,20 +70,7 @@
         if (prefersWindows) {
           target = document.querySelector('[data-os="windows"]');
         } else if (prefersMac || prefersIOS) {
-          const highEntropyArch = uaData && uaData.platform === 'macOS' && uaData.architecture;
-          if (highEntropyArch) {
-            if (/arm/i.test(highEntropyArch)) target = document.querySelector('[data-os="mac-arm"]');
-            else if (/x86|intel/i.test(highEntropyArch)) target = document.querySelector('[data-os="mac-intel"]');
-          }
-
-          if (!target) {
-            const isArmHint = /arm64|apple silicon|apple m\d|aarch64/i.test(ua);
-            const isIntelHint = /x86_64|i686|intel\s(?:core|cpu)/i.test(ua);
-            if (isArmHint) target = document.querySelector('[data-os="mac-arm"]');
-            else if (isIntelHint) target = document.querySelector('[data-os="mac-intel"]');
-          }
-
-          if (!target) target = document.querySelector('[data-os="mac-arm"]');
+          target = document.querySelector('[data-os="mac-arm"]');
         }
 
         if (target) {
